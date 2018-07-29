@@ -1,0 +1,41 @@
+{
+  "version": "0.1",
+  "catchAll": {
+    "onReceive": [],
+    "next": []
+  },
+  "startNode": "ask-city",
+  "nodes": [
+    {
+      "id": "bda0320009",
+      "name": "welcome",
+      "onEnter": [
+        "getWeather {\"name\":\"value\",\"age\":\"\"}"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "END"
+        }
+      ]
+    },
+    {
+      "id": "d29fc6b771",
+      "name": "ask-city",
+      "next": [
+        {
+          "condition": "true",
+          "node": "welcome"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-z0J9qh"
+      ],
+      "onReceive": [
+        "setUserVariable {\"name\":\"city\",\"value\":\"{{event.text}}\",\"expiry\":\"never\"}",
+        "getUserVariable {\"name\":\"city\",\"output\":\"$city\"}"
+      ]
+    }
+  ]
+}
